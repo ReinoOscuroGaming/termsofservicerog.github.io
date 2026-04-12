@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos de Servicio — Reino Oscuro Gaming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #E8A020;
+    --gold-dim: #9B6A14;
+    --purple: #7B35C8;
+    --purple-dim: #3D1A66;
+    --purple-glow: #9B50E8;
+    --bg-deep: #050407;
+    --bg-mid: #0C0A12;
+    --bg-card: #100E1A;
+    --border: rgba(123, 53, 200, 0.25);
+    --border-gold: rgba(232, 160, 32, 0.3);
+    --text: #C8C0D8;
+    --text-dim: #7A7288;
+    --white: #F0EBF8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.85;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 15% 0%, rgba(123,53,200,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 90% 80%, rgba(232,160,32,0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .noise {
+    position: fixed;
+    inset: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 3.5rem 2rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo-wrap {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-wrap img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(123,53,200,0.5));
+    opacity: 0.92;
+  }
+
+  .site-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 30px rgba(232,160,32,0.3);
+    line-height: 1;
+  }
+
+  .site-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    color: var(--text-dim);
+    margin-top: 0.3rem;
+    text-transform: uppercase;
+  }
+
+  .page-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.12em;
+    margin-top: 2rem;
+    text-transform: uppercase;
+  }
+
+  .update-badge {
+    display: inline-block;
+    margin-top: 0.8rem;
+    padding: 0.2rem 0.9rem;
+    border: 1px solid var(--border-gold);
+    border-radius: 2px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--gold-dim);
+    font-family: 'Cinzel', serif;
+  }
+
+  .container {
+    position: relative;
+    z-index: 5;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .toc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--purple);
+    padding: 1.5rem 2rem;
+    margin-bottom: 3.5rem;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .toc-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--purple-glow);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+
+  .toc ol li {
+    counter-increment: toc;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.2rem 0;
+    font-size: 0.88rem;
+  }
+
+  .toc ol li::before {
+    content: counter(toc, upper-roman);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: var(--gold-dim);
+    min-width: 1.8rem;
+  }
+
+  .toc ol li a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .toc ol li a:hover { color: var(--gold); }
+
+  .section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.06em;
+  }
+
+  .divider {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border-gold), transparent);
+  }
+
+  p { margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  ul, ol {
+    margin: 0.8rem 0 1rem 0;
+    padding-left: 1.4rem;
+  }
+
+  li {
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .highlight-box {
+    background: rgba(123,53,200,0.08);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--purple-glow);
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.93rem;
+  }
+
+  .warn-box {
+    background: rgba(232,160,32,0.06);
+    border: 1px solid var(--border-gold);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.93rem;
+  }
+
+  strong { color: var(--white); font-weight: 400; }
+
+  a { color: var(--purple-glow); text-decoration: none; border-bottom: 1px solid rgba(155,80,232,0.3); transition: color 0.2s, border-color 0.2s; }
+  a:hover { color: var(--gold); border-color: rgba(232,160,32,0.4); }
+
+  footer {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+  }
+
+  footer span { color: var(--gold-dim); }
+
+  .scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 42px;
+    height: 42px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--purple-glow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 100;
+    transition: border-color 0.2s, color 0.2s;
+    border-radius: 2px;
+  }
+
+  .scroll-top:hover { border-color: var(--purple-glow); color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .container { padding: 2rem 1.2rem 4rem; }
+    header { padding: 2.5rem 1.2rem 2rem; }
+    .logo-wrap img { width: 70px; height: 70px; }
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header>
+  <div class="logo-wrap">
+    <img src="logo_rog.png" alt="Reino Oscuro Gaming">
+  </div>
+  <div class="site-name">Reino Oscuro</div>
+  <div class="site-sub">Gaming Community</div>
+  <div class="page-title">Términos de Servicio</div>
+  <div class="update-badge">Última actualización: Abril 2026</div>
+</header>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">Índice de contenidos</div>
+    <ol>
+      <li><a href="#s1">Aceptación de los términos</a></li>
+      <li><a href="#s2">Descripción del servicio</a></li>
+      <li><a href="#s3">Registro y cuenta de usuario</a></li>
+      <li><a href="#s4">Normas de conducta</a></li>
+      <li><a href="#s5">Foro de la comunidad</a></li>
+      <li><a href="#s6">Tienda y pagos</a></li>
+      <li><a href="#s7">Propiedad intelectual</a></li>
+      <li><a href="#s8">Limitación de responsabilidad</a></li>
+      <li><a href="#s9">Suspensión y cancelación</a></li>
+      <li><a href="#s10">Modificaciones</a></li>
+      <li><a href="#s11">Contacto</a></li>
+    </ol>
+  </div>
+
+  <div class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <span class="section-title">Aceptación de los Términos</span>
+      <span class="divider"></span>
+    </div>
+    <p>Bienvenido a <strong>Reino Oscuro</strong>, la comunidad gaming pensada para aquellos que buscan un lugar donde forjarse como jugadores. Al acceder a nuestro sitio web, registrarte, navegar por el foro, utilizar la tienda o dejar un comentario, confirmas que has leído, comprendido y aceptado estos Términos de Servicio en su totalidad.</p>
+    <p>Si no estás de acuerdo con alguna de estas condiciones, te pedimos que no hagas uso de nuestra plataforma.</p>
+    <div class="highlight-box">
+      Estos términos constituyen un acuerdo legalmente vinculante entre tú (el usuario) y Reino Oscuro Gaming. La aceptación es efectiva desde el momento en que accedes a cualquier parte de la plataforma.
+    </div>
+  </div>
+
+  <div class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <span class="section-title">Descripción del Servicio</span>
+      <span class="divider"></span>
+    </div>
+    <p>Reino Oscuro es una <strong>comunidad gaming</strong> cuyo objetivo principal es atraer y conectar a nuevos jugadores. Nuestra plataforma ofrece los siguientes apartados:</p>
+    <ul>
+      <li><strong>Foro:</strong> espacio de debate, estrategia y comunidad donde los miembros pueden crear hilos, responder publicaciones y compartir experiencias de juego.</li>
+      <li><strong>Tienda:</strong> sección desde la que se pueden adquirir productos, artículos digitales, artículos de merchandising y contenido relacionado con la comunidad.</li>
+      <li><strong>Comentarios:</strong> sistema de opiniones abierto que permite a los usuarios interactuar con el contenido publicado en la web.</li>
+    </ul>
+    <p>Nos reservamos el derecho de ampliar, modificar o retirar cualquiera de estos servicios en cualquier momento y sin previo aviso.</p>
+  </div>
+
+  <div class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <span class="section-title">Registro y Cuenta de Usuario</span>
+      <span class="divider"></span>
+    </div>
+    <p>Para acceder a determinadas funciones de Reino Oscuro es necesario crear una cuenta. Al registrarte, te comprometes a:</p>
+    <ul>
+      <li>Proporcionar información veraz, completa y actualizada.</li>
+      <li>Mantener la confidencialidad de tu contraseña y no compartirla con terceros.</li>
+      <li>Ser el único responsable de toda actividad que ocurra bajo tu cuenta.</li>
+      <li>Notificar de inmediato cualquier uso no autorizado de tu cuenta.</li>
+    </ul>
+    <p>El registro está permitido a personas mayores de <strong>14 años</strong>. Si eres menor de 18 años, deberás contar con el consentimiento de tu padre, madre o tutor legal.</p>
+    <div class="warn-box">
+      <strong>Una cuenta por persona.</strong> El uso de múltiples cuentas, bots o scripts automatizados para el registro está estrictamente prohibido y puede derivar en la suspensión permanente de todas las cuentas implicadas.
+    </div>
+  </div>
+
+  <div class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <span class="section-title">Normas de Conducta</span>
+      <span class="divider"></span>
+    </div>
+    <p>Reino Oscuro es un espacio para disfrutar del gaming. Para mantener ese ambiente, queda terminantemente prohibido:</p>
+    <ul>
+      <li>Publicar contenido ofensivo, discriminatorio, racista, sexista o que incite al odio.</li>
+      <li>Acosar, amenazar o intimidar a otros miembros de la comunidad.</li>
+      <li>Difundir información falsa o engañosa sobre juegos, eventos o miembros.</li>
+      <li>Hacer spam, publicar enlaces maliciosos o contenido publicitario no autorizado.</li>
+      <li>Compartir contenido protegido por derechos de autor sin los permisos pertinentes.</li>
+      <li>Intentar hackear, vulnerar o comprometer la seguridad de la plataforma.</li>
+      <li>Suplantar la identidad de otro usuario, moderador o miembro del equipo.</li>
+    </ul>
+    <p>El incumplimiento de estas normas puede resultar en advertencias, suspensiones temporales o el baneo permanente de la plataforma, a criterio del equipo moderador.</p>
+  </div>
+
+  <div class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <span class="section-title">Foro de la Comunidad</span>
+      <span class="divider"></span>
+    </div>
+    <p>El foro de Reino Oscuro es el corazón de nuestra comunidad. Al publicar en él, otorgas a Reino Oscuro una licencia no exclusiva para mostrar, distribuir y moderar tu contenido dentro de la plataforma.</p>
+    <p>Eres el único responsable del contenido que publiques. Reino Oscuro no se hace responsable de opiniones, enlaces externos ni información compartida por los usuarios en el foro.</p>
+    <p>Los moderadores tienen autoridad para editar, mover o eliminar cualquier publicación que vulnere estas normas sin necesidad de justificación previa.</p>
+  </div>
+
+  <div class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <span class="section-title">Tienda y Pagos</span>
+      <span class="divider"></span>
+    </div>
+    <p>La tienda de Reino Oscuro permite adquirir productos y artículos digitales relacionados con la comunidad. Al realizar una compra, aceptas las siguientes condiciones:</p>
+    <ul>
+      <li>Los precios incluyen los impuestos aplicables según la legislación vigente.</li>
+      <li>Los pagos se procesan de forma segura a través de proveedores de pago externos certificados.</li>
+      <li>Los productos digitales no son reembolsables una vez entregados, salvo defecto técnico comprobado.</li>
+      <li>Los artículos físicos están sujetos a las políticas de devolución indicadas en cada producto.</li>
+    </ul>
+    <div class="warn-box">
+      En caso de problema con un pago o producto, contacta con nuestro equipo de soporte antes de iniciar cualquier disputa con tu entidad bancaria.
+    </div>
+  </div>
+
+  <div class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">VII</span>
+      <span class="section-title">Propiedad Intelectual</span>
+      <span class="divider"></span>
+    </div>
+    <p>Todo el contenido original de Reino Oscuro —incluyendo el logo, diseños, textos, imágenes y estructura del sitio— es propiedad exclusiva de Reino Oscuro Gaming o de sus respectivos titulares. Queda prohibida su reproducción, distribución o uso comercial sin autorización expresa por escrito.</p>
+    <p>Los nombres de juegos, logos de desarrolladoras y marcas comerciales mencionadas en la plataforma pertenecen a sus respectivos propietarios. Reino Oscuro no tiene afiliación oficial con ninguna de dichas marcas salvo que se indique expresamente.</p>
+  </div>
+
+  <div class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">VIII</span>
+      <span class="section-title">Limitación de Responsabilidad</span>
+      <span class="divider"></span>
+    </div>
+    <p>Reino Oscuro pone todo su empeño en mantener la plataforma operativa y segura. Sin embargo, no podemos garantizar la disponibilidad ininterrumpida del servicio ni ser responsables de:</p>
+    <ul>
+      <li>Interrupciones técnicas, caídas del servidor o pérdida de datos.</li>
+      <li>Daños derivados del contenido publicado por terceros en el foro o comentarios.</li>
+      <li>Pérdidas económicas o de otro tipo causadas por el uso o la imposibilidad de uso de la plataforma.</li>
+      <li>Contenido de sitios externos enlazados desde nuestra web.</li>
+    </ul>
+  </div>
+
+  <div class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">IX</span>
+      <span class="section-title">Suspensión y Cancelación</span>
+      <span class="divider"></span>
+    </div>
+    <p>Reino Oscuro se reserva el derecho de suspender o cancelar cualquier cuenta que incumpla estos Términos de Servicio, sin previo aviso y sin obligación de reembolso de compras previas.</p>
+    <p>Tú también puedes solicitar la cancelación de tu cuenta en cualquier momento contactando con nuestro equipo. Tras la cancelación, tus datos serán tratados conforme a nuestra Política de Privacidad.</p>
+  </div>
+
+  <div class="section" id="s10">
+    <div class="section-header">
+      <span class="section-num">X</span>
+      <span class="section-title">Modificaciones</span>
+      <span class="divider"></span>
+    </div>
+    <p>Podemos actualizar estos Términos de Servicio en cualquier momento. Los cambios entran en vigor en el momento de su publicación en esta página. Si continúas usando la plataforma tras la actualización, entendemos que aceptas los nuevos términos.</p>
+    <p>Te recomendamos revisar periódicamente esta página para mantenerte informado.</p>
+  </div>
+
+  <div class="section" id="s11">
+    <div class="section-header">
+      <span class="section-num">XI</span>
+      <span class="section-title">Contacto</span>
+      <span class="divider"></span>
+    </div>
+    <p>Si tienes dudas sobre estos Términos de Servicio o necesitas ponerte en contacto con el equipo de Reino Oscuro, puedes hacerlo a través de los canales oficiales de la comunidad:</p>
+    <ul>
+      <li>Formulario de contacto en la web</li>
+      <li>Foro oficial de la comunidad</li>
+      <li>Canales de comunicación indicados en el sitio</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 Reino Oscuro Gaming</span> — Todos los derechos reservados
+  <br><br>
+  <a href="politica-de-privacidad.html" style="font-size:0.75rem; letter-spacing:0.1em; border:none; color: var(--text-dim);">Política de Privacidad →</a>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">↑</button>
+
+</body>
+</html>
